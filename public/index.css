@@ -7,3 +7,43 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+.huge-div-color {
+    background-image: linear-gradient(
+        to top, rgb(0, 0, 0) 0%, transparent 30%
+    );
+}
+
+.huge-div-color-2 {
+    background-image: linear-gradient(
+        to right, rgb(0, 0, 0) 5%, transparent 50%
+    );
+}
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #181818;
+}
+
+.bg-image-1 {
+    background-image: linear-gradient(
+        to right, black 1%, transparent 100%
+    );
+}
+
+.bg-image-2 {
+    background-image: linear-gradient(
+        to top, black 10%, transparent 50%
+    );
+}
