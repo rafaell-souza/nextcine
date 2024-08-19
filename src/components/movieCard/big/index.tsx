@@ -4,7 +4,7 @@ import Link from 'next/link';
 import ICard from '@/app/interfaces/ICard';
 import MyButton from '@/components/mybutton';
 
-const movieCard = ({ id, title, image, release, overview }: ICard) => {
+const movieCard = ({ id, title, image, overview }: ICard) => {
     return (
         <section className='w-full flex relative justify-end flex shrink-0'>
 

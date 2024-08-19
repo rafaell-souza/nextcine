@@ -13,7 +13,7 @@ import { IoMdArrowDropup } from "react-icons/io";
 const Header = () => {
     const { isTrue, toggle } = StateCondition();
     return (
-        <section className="shadow h-8 z-10 flex justify-end px-10 bg-zinc-900 fixed w-full items-center">
+        <section className="shadow h-8 z-50 flex justify-end px-10 bg-zinc-900 fixed w-full items-center">
 
             <div
                 onClick={toggle}

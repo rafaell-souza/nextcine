@@ -13,7 +13,7 @@ const Toolbar = () => {
     const { isTrue, toggle } = stateCondition();
     return (
         <>
-            <div className='fixed z-20 px-1 flex text-white'>
+            <div className='fixed z-50 px-1 flex text-white'>
                 <button onClick={toggle} className='mr-2'>
                     {isTrue ? <RiMenuUnfold4Fill className="text-2xl" /> : <RiMenuUnfold3Fill className="text-2xl" />}
                 </button>
@@ -23,11 +23,19 @@ const Toolbar = () => {
             <motion.section
                 initial={{ x: -170 }}
                 animate={{
-                    width: isTrue === false ? ["34%", "36%", "0%"] : isTrue && ["0%", "36%", "34%"],
+                    width: !isTrue? ["40%", "44%", "0%"] : ["0%", "44%", "40%"],
                 }}
                 transition={{ duration: 0.5, times: [0, 0.5, 1], ease: 'easeInOut' }}
-                className='fixed text-white fixed bg-zinc-950 h-screen'>
+                className={`${isTrue === null? "invisible":"visible"} fixed text-white border-r border-zinc-900 backdrop-blur-sm z-40 h-screen`}>
             </motion.section>
+
+            <motion.div
+                initial={{ x: -170 }}
+                animate={{ width: !isTrue ? "0%" : "100%" }}
+                transition={{ delay: 0.25 }}
+                className={`${isTrue === null? "invisible": "visible"} backdrop-blur-[2px] w-full absolute z-30 w-full h-full`}
+            >
+            </motion.div>
         </>
     )
 }
