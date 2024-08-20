@@ -1,4 +1,4 @@
-interface ICard {
+interface IBigCard {
     id: number;
     title: string;
     image: string;
@@ -6,4 +6,4 @@ interface ICard {
     overview: string;
 }
 
-export default ICard;
+export default IBigCard;

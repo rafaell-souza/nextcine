@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 import MyButton from "../mybutton";
 import StateCondition from "@/utilites/stateCondition";
+import handleYScroll from "@/utilites/viewYScroll";
 
 import { FaMoon } from "react-icons/fa";
 import { IoSunnySharp } from "react-icons/io5";
@@ -12,8 +13,10 @@ import { IoMdArrowDropup } from "react-icons/io";
 
 const Header = () => {
     const { isTrue, toggle } = StateCondition();
+    const scrollY = handleYScroll();
     return (
-        <section className="shadow h-8 z-50 flex justify-end px-10 bg-zinc-900 fixed w-full items-center">
+        <section 
+        className={`h-8 z-50 flex justify-end px-10 ${scrollY > 0? "backdrop-blur-lg" : "bg-zinc-900"} fixed w-full border-b border-zinc-800 items-center`}>
 
             <div
                 onClick={toggle}

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from 'next/link';
-import ICard from '@/app/interfaces/ICard';
+import ICard from '@/app/interfaces/IBigCard';
 import MyButton from '@/components/mybutton';
 
 const movieCard = ({ id, title, image, overview }: ICard) => {

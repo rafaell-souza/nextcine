@@ -26,16 +26,8 @@ const Toolbar = () => {
                     width: !isTrue? ["40%", "44%", "0%"] : ["0%", "44%", "40%"],
                 }}
                 transition={{ duration: 0.5, times: [0, 0.5, 1], ease: 'easeInOut' }}
-                className={`${isTrue === null? "invisible":"visible"} fixed text-white border-r border-zinc-900 backdrop-blur-sm z-40 h-screen`}>
+                className={`${isTrue === null? "invisible":"visible"} fixed text-white border-r border-zinc-900 backdrop-blur-[2px] z-40 h-screen`}>
             </motion.section>
-
-            <motion.div
-                initial={{ x: -170 }}
-                animate={{ width: !isTrue ? "0%" : "100%" }}
-                transition={{ delay: 0.25 }}
-                className={`${isTrue === null? "invisible": "visible"} backdrop-blur-[2px] w-full absolute z-30 w-full h-full`}
-            >
-            </motion.div>
         </>
     )
 }
