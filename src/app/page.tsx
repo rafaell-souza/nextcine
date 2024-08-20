@@ -37,27 +37,93 @@ export default async function Home() {
           }
         </section>
 
-        <h1 className="text-2xl text-white px-1 mb-1">POPULAR</h1>
+        <h1 className="text-xl text-white px-1 mb-1">POPULAR</h1>
 
-        <section className="flex text-white px-1 relative w-[905px]">
-            <div className="color-class"></div> {/* background image black for each side of the container.*/}
-            <Carousel>
-              {
-                movies?.popular && movies?.popular?.results?.map((movie) => {
-                  return (
-                    <SmallCard
-                      key={movie.id}
-                      id={movie.id}
-                      title={movie.title}
-                      image={imageUrlBase + movie.poster_path}
-                      rate={movie.vote_average} />
-                  )
-                }
+        <section className="flex text-white relative h-48 mb-8 w-[905px]">
+          <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
+          <Carousel>
+            {
+              movies?.popular && movies?.popular?.results?.map((movie) => {
+                return (
+                  <SmallCard
+                    key={movie.id}
+                    id={movie.id}
+                    title={movie.title}
+                    image={imageUrlBase + movie.poster_path}
+                    rate={movie.vote_average} />
                 )
               }
-            </Carousel>
-            <div className="color-class"></div> {/* background image black for each side of the container.*/}
+              )
+            }
+          </Carousel>
+          <div className="smallcard-container-background pointer-events-none absolute h-full z-20 w-12 right-0"></div>
         </section>
+
+        <h1 className="text-xl text-white px-1 mb-1">TOP RATED</h1>
+
+        <section className="flex text-white relative h-48 mb-12 w-[905px]">
+          <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
+          <Carousel>
+            {
+              movies?.topRated && movies?.topRated?.results?.map((movie) => {
+                return (
+                  <SmallCard
+                    key={movie.id}
+                    id={movie.id}
+                    title={movie.title}
+                    image={imageUrlBase + movie.poster_path}
+                    rate={movie.vote_average} />
+                )
+              }
+              )
+            }
+          </Carousel>
+          <div className="smallcard-container-background pointer-events-none absolute h-full z-20 w-12 right-0"></div>
+        </section>
+
+        <h1 className="text-xl text-white px-1 mb-1">SOON</h1>
+
+        <section className="flex text-white relative h-48 mb-8 w-[905px]">
+          <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
+          <Carousel>
+            {
+              movies?.upcoming && movies?.upcoming?.results?.map((movie) => {
+                return (
+                  <SmallCard
+                    key={movie.id}
+                    id={movie.id}
+                    title={movie.title}
+                    image={imageUrlBase + movie.poster_path}
+                    rate={movie.vote_average} />
+                )
+              }
+              )
+            }
+          </Carousel>
+          <div className="smallcard-container-background pointer-events-none absolute h-full z-20 w-12 right-0"></div>
+        </section>
+
+        <h1 className="text-xl text-white px-1 mb-1">TRENDING</h1>
+
+        <section className="flex text-white relative h-48 mb-8 w-[905px]">
+          <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
+          <Carousel>
+            {
+              movies?.trending && movies?.trending?.results?.map((movie) => {
+                return (
+                  <SmallCard
+                    key={movie.id}
+                    id={movie.id}
+                    title={movie.title}
+                    image={imageUrlBase + movie.poster_path}
+                    rate={movie.vote_average} />
+                )
+              }
+              )
+            }
+          </Carousel>
+          <div className="smallcard-container-background pointer-events-none absolute h-full z-20 w-12 right-0"></div>
+          </section>
 
       </section>
     </main>
