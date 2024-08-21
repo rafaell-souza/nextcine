@@ -61,7 +61,7 @@ export default async function Home() {
 
         <h1 className="text-xl text-white px-1 mb-1">TOP RATED</h1>
 
-        <section className="flex text-white relative h-48 mb-12 w-[905px]">
+        <section className="flex text-white relative h-48 mb-8 w-[905px]">
           <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
           <Carousel>
             {

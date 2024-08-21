@@ -11,11 +11,12 @@ const SmallCard = ({ id, title, image, rate }: ISmallCard) => {
         <>
             <Link
                 href={`/movie/${id}`}
-                className="h-48 w-32 flex relative shrink-0 rounded-lg">
+                className="h-48 w-32 flex relative snap-center shrink-0 rounded-lg">
 
                 <motion.img
                 initial={{ opacity: 1 }}
                 whileHover={{ opacity: 0.8 }} 
+                transition={{ duration: 0.4 }}
                 src={image} 
                 alt={title} 
                 className="absolute h-full rounded-lg z-20" />

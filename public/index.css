@@ -50,6 +50,6 @@ body {
 
 .smallcard-container-background {
     background-image: linear-gradient(
-        to left, black 10%, transparent 80%
+        to left, black 1%, transparent 30%
     );
 }
