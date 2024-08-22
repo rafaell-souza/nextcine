@@ -3,6 +3,7 @@ import BigCard from "../components/movieCard/big";
 import SmallCard from "../components/movieCard/small";
 import Carousel from "@/components/Carousel";
 import Header from "@/components/header";
+import BigCarousel from "@/components/bigCarousel";
 
 import requestData from "../utilites/requestData";
 
@@ -13,28 +14,49 @@ const imageUrlBase = "https://image.tmdb.org/t/p/original";
 
 export default async function Home() {
   const movies = await requestData<HomeInterface>(url, "force-cache");
-
+  const trending = [...movies!.trending.results.slice(0, 10), ...movies!.trending.results.slice(0, 1)];
   return (
     <main className="flex">
       <Header />
       <Toolbar />
-      <section className="relative top-8 h-screen">
+      <section className="relative top-2 h-screen">
 
-        <section className="flex overflow-x-hidden relative w-[905px] h-[360px]">
+        <BigCarousel>
           {
-            movies?.trending && movies?.trending?.results?.slice(0, 10).map((movie) => {
+            trending.map((movie, index) => {
               return (
                 <BigCard
-                  key={movie.id}
+                  key={index}
                   id={movie.id}
                   title={movie.title}
                   image={imageUrlBase + movie.backdrop_path}
                   release={movie.release_date}
                   overview={movie.overview} />
               )
-            }
-            )
+            })
           }
+        </BigCarousel>
+
+
+        <h1 className="text-xl text-white px-1 mb-1">TRENDING</h1>
+
+        <section className="flex text-white relative h-48 mb-8 w-[905px]">
+          <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
+          <Carousel>
+            {
+              movies?.trending && movies?.trending?.results?.map((movie) => {
+                return (
+                  <SmallCard
+                    key={movie.id}
+                    id={movie.id}
+                    title={movie.title}
+                    image={imageUrlBase + movie.poster_path}
+                    rate={movie.vote_average} />
+                )
+              })
+            }
+          </Carousel>
+          <div className="smallcard-container-background pointer-events-none absolute h-full z-20 w-12 right-0"></div>
         </section>
 
         <h1 className="text-xl text-white px-1 mb-1">POPULAR</h1>
@@ -52,8 +74,28 @@ export default async function Home() {
                     image={imageUrlBase + movie.poster_path}
                     rate={movie.vote_average} />
                 )
-              }
-              )
+              })
+            }
+          </Carousel>
+          <div className="smallcard-container-background pointer-events-none absolute h-full z-20 w-12 right-0"></div>
+        </section>
+
+        <h1 className="text-xl text-white px-1 mb-1">NOW PLAYING</h1>
+
+        <section className="flex text-white relative h-48 mb-8 w-[905px]">
+          <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
+          <Carousel>
+            {
+              movies?.nowPlaying && movies?.nowPlaying?.results?.map((movie) => {
+                return (
+                  <SmallCard
+                    key={movie.id}
+                    id={movie.id}
+                    title={movie.title}
+                    image={imageUrlBase + movie.poster_path}
+                    rate={movie.vote_average} />
+                )
+              })
             }
           </Carousel>
           <div className="smallcard-container-background pointer-events-none absolute h-full z-20 w-12 right-0"></div>
@@ -74,8 +116,7 @@ export default async function Home() {
                     image={imageUrlBase + movie.poster_path}
                     rate={movie.vote_average} />
                 )
-              }
-              )
+              })
             }
           </Carousel>
           <div className="smallcard-container-background pointer-events-none absolute h-full z-20 w-12 right-0"></div>
@@ -96,34 +137,11 @@ export default async function Home() {
                     image={imageUrlBase + movie.poster_path}
                     rate={movie.vote_average} />
                 )
-              }
-              )
+              })
             }
           </Carousel>
           <div className="smallcard-container-background pointer-events-none absolute h-full z-20 w-12 right-0"></div>
         </section>
-
-        <h1 className="text-xl text-white px-1 mb-1">TRENDING</h1>
-
-        <section className="flex text-white relative h-48 mb-8 w-[905px]">
-          <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
-          <Carousel>
-            {
-              movies?.trending && movies?.trending?.results?.map((movie) => {
-                return (
-                  <SmallCard
-                    key={movie.id}
-                    id={movie.id}
-                    title={movie.title}
-                    image={imageUrlBase + movie.poster_path}
-                    rate={movie.vote_average} />
-                )
-              }
-              )
-            }
-          </Carousel>
-          <div className="smallcard-container-background pointer-events-none absolute h-full z-20 w-12 right-0"></div>
-          </section>
 
       </section>
     </main>

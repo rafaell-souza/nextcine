@@ -6,7 +6,7 @@ import MyButton from '@/components/mybutton';
 
 const movieCard = ({ id, title, image, overview }: ICard) => {
     return (
-        <section className='w-full flex relative justify-end flex shrink-0'>
+        <section className='w-full flex snap-center relative justify-end flex shrink-0'>
 
             <div className=' flex flex-col text-white w-[450px] left-0 absolute h-full z-20 left-10 justify-center'>
                 <h1 className='text-4xl mb-3'>{title}</h1>

@@ -20,7 +20,7 @@ const Carousel = ({
         <>
             <button
                 onClick={scrollLeft}
-                className="rotate-180 absolute left-0 flex top-20 text-4xl z-30 text-white">
+                className="rotate-180 absolute left-0 flex top-20 text-4xl z-30">
                 <IoIosArrowDroprightCircle />
             </button>
             <section
@@ -30,7 +30,7 @@ const Carousel = ({
             </ section>
             <button
                 onClick={scrollRight}
-                className="absolute right-0 flex top-20 text-4xl z-30 text-white">
+                className="absolute right-0 flex top-20 text-4xl z-30">
                 <IoIosArrowDroprightCircle />
             </button>
         </>
