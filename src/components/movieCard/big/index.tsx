@@ -4,7 +4,7 @@ import Link from 'next/link';
 import ICard from '@/app/interfaces/IBigCard';
 import MyButton from '@/components/mybutton';
 
-const movieCard = ({ id, title, image, overview }: ICard) => {
+const BigCard = ({ id, title, image, overview }: ICard) => {
     return (
         <section className='w-full flex snap-center relative justify-end flex shrink-0'>
 
@@ -12,21 +12,9 @@ const movieCard = ({ id, title, image, overview }: ICard) => {
                 <h1 className='text-4xl mb-3'>{title}</h1>
                 <p className='text-lg leading-tight'>{overview?.slice(0, 120) + "..."}</p>
 
-                <div className='flex mt-6'>
-                    <Link href={`/movie/${id}`}>
-                        <MyButton
-                            style='bg-zinc-950 px-5 py-2'
-                            handleClick={() => { }}>
+                    <Link href={`/movie/${id}`} className='bg-zinc-950 hover:bg-black hover:border hover:border-zinc-900 justify-center flex rounded-lg mt-6 py-2 w-36'>
                             <p className='text-white'>More info</p>
-                        </MyButton>
                     </Link>
-
-                    <MyButton
-                        style='border border-zinc-800 ml-2 px-5 py-2'
-                        handleClick={() => alert("clicked")}>
-                        <p>Trailer</p>
-                    </MyButton>
-                </div>
             </div>
 
             <div className='relative'>
@@ -38,4 +26,4 @@ const movieCard = ({ id, title, image, overview }: ICard) => {
     )
 }
 
-export default movieCard;
+export default BigCard;

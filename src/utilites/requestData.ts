@@ -7,7 +7,7 @@ const requestData = async <T>(url: string, caching: Cache) => {
         return data as T;
     }
     catch (error) {
-        console.error(error);
+        console.error("failed to fetch data", error);
     }
 };
 

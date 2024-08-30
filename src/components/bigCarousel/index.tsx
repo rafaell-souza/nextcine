@@ -6,7 +6,6 @@ import { useRef } from "react";
 // custom hook
 import useScroll from "@/hooks/useBigCardScroll";
 
-
 const BigCarousel = ({ style, children, }: { style?: string, children: React.ReactNode }) => {
     const ref = useRef<HTMLDivElement>(null);
     const { handleLeftScroll, handleRightScroll, setUserInteraction } = useScroll(ref);
@@ -14,13 +13,13 @@ const BigCarousel = ({ style, children, }: { style?: string, children: React.Rea
     return (
         <main className="w-[905px] h-[360px] relative mb-7">
             <div className="absolute right-20 bottom-0 w-12 h-12 flex z-30 text-4xl text-white">
-                <button 
-                onClick={() => {handleLeftScroll(); setUserInteraction(true)}}
-                className="rotate-180" >
+                <button
+                    onClick={() => { handleLeftScroll(); setUserInteraction(true) }}
+                    className="rotate-180" >
                     <IoIosArrowDroprightCircle />
                 </button>
 
-                <button onClick={() => {handleRightScroll(); setUserInteraction(true)}}>
+                <button onClick={() => { handleRightScroll(); setUserInteraction(true) }}>
                     <IoIosArrowDroprightCircle />
                 </button>
             </div>

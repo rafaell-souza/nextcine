@@ -1,8 +1,3 @@
-interface Genre {
-    id: number;
-    name: string;
-}
-
 interface MovieDetails {
     id: number;
     title: string;
