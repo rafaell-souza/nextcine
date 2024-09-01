@@ -8,6 +8,7 @@ import SmallCard from "@/components/movieCard/small";
 import fetchManyMovies from "@/utilites/fetchManyMovies";
 
 import { LiaSpinnerSolid } from "react-icons/lia";
+import { PiFilmSlateFill } from "react-icons/pi";
 
 import { useRef } from "react";
 import Link from "next/link";
@@ -18,16 +19,19 @@ const SearchPage = (
     { params }: { params: { name: string } }
 ) => {
     const { name } = params;
-    const ref = useRef<HTMLDivElement | null>(null);
+    const ref = useRef<IntersectionObserver | null>(null);
 
-    const { data, loading } = fetchManyMovies(ref, name) as { data: Movies, loading: boolean };
+    const { 
+        data, 
+        loading, 
+        pagination } = fetchManyMovies(ref, name) as { data: Movies, loading: boolean, pagination: () => void };
 
     return (
         <>  <Header />
             <Toolbar />
             <section className="relative top-8 w-full h-full px-1">
                 {
-                    loading ? (
+                    loading && data?.results.length === 0 ? (
                         <div className="h-[360px] w-full flex justify-center items-center">
                             <span className="text-white text-3xl animate-spin"><LiaSpinnerSolid /> </span>
                         </div>
@@ -39,12 +43,13 @@ const SearchPage = (
                             <div className="gap-y-5 py-3 grid grid-cols-6 pl-4">
                                 {
                                     data.results.map((movie, index) => (
-                                        <SmallCard
-                                            key={index}
-                                            id={movie.id}
-                                            title={movie.title}
-                                            image={tmdbBaseImageUrl + movie.poster_path}
-                                        />
+                                        <div ref={index === data.results.length -1 ? pagination : null} key={index}>
+                                            <SmallCard
+                                                id={movie.id}
+                                                title={movie.title}
+                                                image={tmdbBaseImageUrl + movie.poster_path}
+                                            />
+                                        </div>
                                     ))
                                 }
                             </ div>
@@ -56,12 +61,17 @@ const SearchPage = (
                                     </div>
                                 )
                             }
+                            <Footer />
                         </>
-                    ) : (
-                        <div className="h-[360px] w-full flex flex-col border">
+                    ) : data?.total_results === 0 && (
+                        <div className="h-[360px] w-full flex flex-col">
                             <span className="text-white pt-4 border-b border-zinc-900 font-bold text-lg">{`No results found for: ${name}`}</span>
-                            <div className="w-full h-full border flex justify-center items-center">
-                                <Link href="/" className="text-white rounded-full bg-zinc-900 py-1 px-3 text-lg">Go back to home</Link>
+                            <div className="w-full h-full flex flex-col justify-center items-center">
+
+                                <span className="text-white text-7xl"><PiFilmSlateFill /></span>
+
+                                <Link href="/" className="text-white font-bold border-b mb-8 py- border-zinc-800 hover:opacity-80 px-2 text-lg">Back to home</Link>
+
                             </div>
                         </div>
                     )

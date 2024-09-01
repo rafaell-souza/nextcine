@@ -1,12 +1,12 @@
 "use client";
 
-import { useState, useCallback, useEffect } from "react"
+import { useState, useCallback, useEffect } from "react";
 import requestData from "@/utilites/requestData";
 
 import Movies from "@/app/interfaces/movies";
 
 const fetchManyMovies = (
-    ref: React.MutableRefObject<HTMLDivElement | null>, query: string
+    ref: React.MutableRefObject<IntersectionObserver | null>, query: string
 ) => {
     const [data, setData] = useState<Movies>({
         page: 0,
@@ -25,34 +25,51 @@ const fetchManyMovies = (
             total_results: 0,
             results: []
         });
-    }, [query])
+        setPageNumber(1); 
+    }, [query]);
 
     useEffect(() => {
-        setLoading(true);
         const request = async () => {
+            if (loading) return;
+            if (pageNumber > data.total_pages && data.total_pages !== 0) {
+                return; 
+            }
+
+            setLoading(true);
             try {
                 const response = await requestData<Movies>(`/api/movies/find/${query}/${pageNumber}`, "no-cache");
 
                 if (response) {
-                    if (data.total_pages === 0 || response.page > pageNumber) {
-                        setData(response);
-                    } else {
-                        setData({
-                            ...data,
-                            results: [...data.results, ...response.results]
-                        });
-                    }
-                } setLoading(false);
-            }
-            catch (error) {
+                    setData(prevData => ({
+                        ...response,
+                        results: pageNumber === 1 ? response.results : [...prevData.results, ...response.results]
+                    }));
+                }
+                setLoading(false);
+            } catch (error) {
                 setLoading(false);
                 console.error(error);
-            }
-        }
-        request();
-    }, [query, pageNumber])
+            } 
+        };
 
-    return { data, loading }
-}
+        request();
+    }, [query, pageNumber]);
+
+    const pagination = useCallback((node) => {
+        if (loading) return;
+        if (ref.current) ref.current.disconnect();
+
+        ref.current = new IntersectionObserver(entries => {
+            if (entries[0].isIntersecting && pageNumber < data.total_pages) {
+                setPageNumber(prev => prev + 1);
+            }
+        });
+
+        if (node) ref.current.observe(node);
+    }, [loading, pageNumber, data.total_pages, ref]);
+
+    console.log(data.results, pageNumber);
+    return { data, loading, pagination };
+};
 
 export default fetchManyMovies;
