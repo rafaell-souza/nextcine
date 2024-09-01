@@ -8,7 +8,7 @@ export async function GET(
 ) {
     try {
         const tmdb = new Tmdb();
-        const details = await tmdb.RequestData<MovieTbDetails>(`/movie/${params.id}`, "reload");
+        const details = await tmdb.RequestData<MovieTbDetails>(`/movie/${params.id}?`, "reload");
         
         return new Response(JSON.stringify(details), {
             headers: { "Content-Type": "application/json" },

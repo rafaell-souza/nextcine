@@ -7,7 +7,7 @@ export async function GET(
 ): Promise<Response> {
     try {
         const tmdb = new Tmdb();
-        const similarMovies = await tmdb.RequestData(`/movie/${params.id}/similar`, "no-cache");
+        const similarMovies = await tmdb.RequestData(`/movie/${params.id}/similar?`, "no-cache");
         return new Response(JSON.stringify(similarMovies), {
             headers: { "Content-Type": "application/json" },
             status: 200

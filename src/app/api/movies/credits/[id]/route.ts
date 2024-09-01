@@ -7,7 +7,7 @@ export async function GET(
 ): Promise<Response> {
     try {
         const tmdb = new Tmdb();
-        const credits = await tmdb.RequestData(`/movie/${params.id}/credits`, "reload");
+        const credits = await tmdb.RequestData(`/movie/${params.id}/credits?`, "reload");
         return new Response(JSON.stringify(credits), {
             headers: { "Content-Type": "application/json" },
             status: 200

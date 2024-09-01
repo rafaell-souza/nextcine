@@ -4,6 +4,7 @@ import SmallCard from "../components/movieCard/small";
 import Carousel from "@/components/Carousel";
 import Header from "@/components/header";
 import BigCarousel from "@/components/bigCarousel";
+import Footer from "@/components/Footer";
 
 import requestData from "../utilites/requestData";
 
@@ -51,7 +52,7 @@ export default async function Home() {
                     id={movie.id}
                     title={movie.title}
                     image={imageUrlBase + movie.poster_path}
-                    rate={movie.vote_average} />
+                    />
                 )
               })
             }
@@ -72,7 +73,7 @@ export default async function Home() {
                     id={movie.id}
                     title={movie.title}
                     image={imageUrlBase + movie.poster_path}
-                    rate={movie.vote_average} />
+                    />
                 )
               })
             }
@@ -93,7 +94,7 @@ export default async function Home() {
                     id={movie.id}
                     title={movie.title}
                     image={imageUrlBase + movie.poster_path}
-                    rate={movie.vote_average} />
+                    />
                 )
               })
             }
@@ -114,7 +115,7 @@ export default async function Home() {
                     id={movie.id}
                     title={movie.title}
                     image={imageUrlBase + movie.poster_path}
-                    rate={movie.vote_average} />
+                    />
                 )
               })
             }
@@ -135,14 +136,14 @@ export default async function Home() {
                     id={movie.id}
                     title={movie.title}
                     image={imageUrlBase + movie.poster_path}
-                    rate={movie.vote_average} />
+                   />
                 )
               })
             }
           </Carousel>
           <div className="smallcard-container-background pointer-events-none absolute h-full z-20 w-12 right-0"></div>
         </section>
-
+        <Footer />
       </section>
     </main>
   );

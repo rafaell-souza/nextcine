@@ -8,7 +8,7 @@ export async function GET(
 ): Promise<Response> {
     try {
         const tmdb = new Tmdb();
-        const video = await tmdb.RequestData<IVideo>(`/movie/${params.id}/videos`, "reload") as IVideo;
+        const video = await tmdb.RequestData<IVideo>(`/movie/${params.id}/videos?`, "reload") as IVideo;
         return new Response(JSON.stringify(video), {
             headers: { "Content-Type": "application/json" },
             status: 200

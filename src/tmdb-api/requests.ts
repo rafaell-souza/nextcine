@@ -7,7 +7,9 @@ export default class Tmdb {
         const cacheMethod: Cache = caching;
         const key = process.env.TMDB_API_KEY;
 
-        const response = await fetch(`${url}${options}?api_key=${key}`, { cache: cacheMethod })
+        console.log(`${url}${options}?api_key=${key}`);
+
+        const response = await fetch(`${url}${options}api_key=${key}`, { cache: cacheMethod })
             .then((response) => response.json())
                 .then((data) => {
                     return data;

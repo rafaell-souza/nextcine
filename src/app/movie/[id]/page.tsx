@@ -10,6 +10,7 @@ import SmallCard from "@/components/movieCard/small";
 import { FaRegClock } from "react-icons/fa6";
 import { CgCalendarDates } from "react-icons/cg";
 import VideoComponent from "@/components/video";
+import Footer from "@/components/Footer";
 
 const imageBase = "https://image.tmdb.org/t/p/original"
 
@@ -34,7 +35,7 @@ export default async function Movie({ params }: { params: { id: string } }) {
     const movieMinutes = details && Number(details.runtime % 60);
 
     return (
-        <main className="w-full h-full relative pb-4">
+        <main className="w-full h-full relative">
             <Header />
             <Toolbar />
 
@@ -103,7 +104,7 @@ export default async function Movie({ params }: { params: { id: string } }) {
                     }
                 </Carousel>
             </section>
-
+            <Footer style="mt-4" />
         </main>
     )
 }
