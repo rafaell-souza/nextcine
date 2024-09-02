@@ -6,7 +6,8 @@ import requestData from "@/utilites/requestData";
 import Movies from "@/app/interfaces/movies";
 
 const fetchManyMovies = (
-    ref: React.MutableRefObject<IntersectionObserver | null>, query: string
+    ref: React.MutableRefObject<IntersectionObserver | null>, 
+    url: string,
 ) => {
     const [data, setData] = useState<Movies>({
         page: 0,
@@ -26,7 +27,7 @@ const fetchManyMovies = (
             results: []
         });
         setPageNumber(1); 
-    }, [query]);
+    }, [url]);
 
     useEffect(() => {
         const request = async () => {
@@ -37,7 +38,7 @@ const fetchManyMovies = (
 
             setLoading(true);
             try {
-                const response = await requestData<Movies>(`/api/movies/find/${query}/${pageNumber}`, "no-cache");
+                const response = await requestData<Movies>(`${url}${pageNumber}`, "no-cache");
 
                 if (response) {
                     setData(prevData => ({
@@ -53,7 +54,7 @@ const fetchManyMovies = (
         };
 
         request();
-    }, [query, pageNumber]);
+    }, [url, pageNumber, url]);
 
     const pagination = useCallback((node) => {
         if (loading) return;
@@ -68,7 +69,6 @@ const fetchManyMovies = (
         if (node) ref.current.observe(node);
     }, [loading, pageNumber, data.total_pages, ref]);
 
-    console.log(data.results, pageNumber);
     return { data, loading, pagination };
 };
 

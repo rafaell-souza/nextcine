@@ -19,19 +19,22 @@ const SearchPage = (
     { params }: { params: { name: string } }
 ) => {
     const { name } = params;
+    const url = `/api/movies/find/${name}/`
+
+
     const ref = useRef<IntersectionObserver | null>(null);
 
     const { 
         data, 
         loading, 
-        pagination } = fetchManyMovies(ref, name) as { data: Movies, loading: boolean, pagination: () => void };
+        pagination } = fetchManyMovies(ref, url) as { data: Movies, loading: boolean, pagination: () => void };
 
     return (
         <>  <Header />
             <Toolbar />
             <section className="relative top-8 w-full h-full px-1">
                 {
-                    loading && data?.results.length === 0 ? (
+                    loading && data?.total_results === 0 ? (
                         <div className="h-[360px] w-full flex justify-center items-center">
                             <span className="text-white text-3xl animate-spin"><LiaSpinnerSolid /> </span>
                         </div>

@@ -3,13 +3,17 @@
 import { motion } from 'framer-motion';
 import { RiMenuUnfold3Fill } from "react-icons/ri";
 import { RiMenuUnfold4Fill } from "react-icons/ri";
+import { CgLogOut } from "react-icons/cg";
 import stateCondition from '../../utilites/stateCondition';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import useGenres from '@/hooks/useGenres';
 
 const Toolbar = () => {
     const [ query, setQuery ] = useState<string>("");
     const { isTrue, toggle } = stateCondition();
+
+    const genres = useGenres();
 
     const router = useRouter();
     return (
@@ -42,6 +46,24 @@ const Toolbar = () => {
 
                     <button className='mt-2 rounded-lg px-4 border border-zinc-800 bg-zinc-900'>search</button>
                 </form>
+
+                <div className='w-full relative top-7'>
+                    <h1 className='border-b border-zinc-900 py-1'>Genres:</h1>
+                    <div className='w-full grid grid-cols-2 gap-y-2 mt-2 h-40 overflow-y-auto'>
+                        {
+                            genres?.map((genre, index) => (
+                                <button 
+                                key={index}
+                                onClick={() => router.push(`/genre/${genre.id}`)}
+                                className='border border-zinc-900 hover:bg-zinc-950 rounded-lg px-2 py-1 text-[11px]'>{genre.name}</button>
+                            ))
+                        }
+                    </div>
+                </div>
+
+                <div className='relative top-14 py-1 bg-zinc-950 justify-center items-center w-full flex'>
+                    <span className="text-white text-2xl"><CgLogOut /></span> <p className='ml-2'>Logout</p>
+                </div>
 
             </motion.section>
         </>
