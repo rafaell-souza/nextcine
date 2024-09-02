@@ -30,7 +30,7 @@ const GenrePage = ({ params }: { params: { id: string } }) => {
                         </div>
                     ) : (
                         <>
-                            <div className="grid grid-cols-6 gap-4">
+                            <div className="grid grid-cols-6 pl-3 py-4 gap-4">
                                 {
                                     data.results.map((movie, index) => (
                                         <div key={index} ref={data?.results?.length - 1 === index ? pagination : null}>

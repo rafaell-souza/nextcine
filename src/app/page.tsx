@@ -41,7 +41,7 @@ export default async function Home() {
 
         <h1 className="text-xl text-white px-1 mb-1">TRENDING</h1>
 
-        <section className="flex text-white relative h-48 mb-8 w-[905px]">
+        <section className="flex text-white relative h-56 mb-8 w-[905px]">
           <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
           <Carousel>
             {
@@ -62,7 +62,7 @@ export default async function Home() {
 
         <h1 className="text-xl text-white px-1 mb-1">POPULAR</h1>
 
-        <section className="flex text-white relative h-48 mb-8 w-[905px]">
+        <section className="flex text-white relative h-56 mb-8 w-[905px]">
           <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
           <Carousel>
             {
@@ -83,7 +83,7 @@ export default async function Home() {
 
         <h1 className="text-xl text-white px-1 mb-1">NOW PLAYING</h1>
 
-        <section className="flex text-white relative h-48 mb-8 w-[905px]">
+        <section className="flex text-white relative h-56 mb-8 w-[905px]">
           <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
           <Carousel>
             {
@@ -104,7 +104,7 @@ export default async function Home() {
 
         <h1 className="text-xl text-white px-1 mb-1">TOP RATED</h1>
 
-        <section className="flex text-white relative h-48 mb-8 w-[905px]">
+        <section className="flex text-white relative h-56 mb-8 w-[905px]">
           <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
           <Carousel>
             {
@@ -125,7 +125,7 @@ export default async function Home() {
 
         <h1 className="text-xl text-white px-1 mb-1">SOON</h1>
 
-        <section className="flex text-white relative h-48 mb-8 w-[905px]">
+        <section className="flex text-white relative h-56 mb-8 w-[905px]">
           <div className="smallcard-container-background pointer-events-none absolute w-12 h-full z-30 rotate-180 left-0"></div>
           <Carousel>
             {

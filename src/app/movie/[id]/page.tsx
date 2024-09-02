@@ -93,7 +93,7 @@ export default async function Movie({ params }: { params: { id: string } }) {
             </section>
 
             <h1 className="text-white mt-10 w-full px-1 font-bold text-xl">You may also like</h1>
-            <section className="relative flex flex-col px-1 mt-1">
+            <section className="relative flex flex-col h-56 px-1 mt-1">
                 <Carousel>
                     {
                         similar?.results?.map((movie, index) => {
