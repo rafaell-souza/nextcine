@@ -16,7 +16,15 @@ datasource db {
 model User {
   id        String   @id @default(cuid())
   email     String   @unique @db.VarChar(255)
-  username  String  @db.VarChar(50)
+  username  String   @db.VarChar(50)
   password  String   @db.VarChar(70)
   createdAt DateTime @default(now())
+  movies    Favorite[]
+}
+
+model Favorite {
+  id      String @id @default(cuid())
+  userId  String @db.VarChar(25)
+  movieId String @db.VarChar(25) @unique
+  user User[] 
 }

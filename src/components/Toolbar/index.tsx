@@ -22,7 +22,7 @@ const Toolbar = () => {
                 <button onClick={toggle} className='mr-2'>
                     {isTrue ? <span className='text-2xl'><RiMenuUnfold4Fill /> </ span> : <span className='text-2xl'><RiMenuUnfold3Fill /></span>}
                 </button>
-                <h1 className='text-2xl'>NextCine</h1>
+                <h1 className='text-2xl'>Cinext</h1>
             </div>
 
             <motion.section
@@ -44,7 +44,7 @@ const Toolbar = () => {
                     type="text" 
                     className='border w-full bg-black text-sm bg-opacity-0 px-2 text-white outline-none border-zinc-800 h-7 rounded-lg' />
 
-                    <button className='mt-2 rounded-lg px-4 border border-zinc-800 bg-zinc-900'>search</button>
+                    <button className='mt-2 rounded-lg px-6 bg-zinc-900 hover:bg-black hover:border border-zinc-900'>search</button>
                 </form>
 
                 <div className='w-full relative top-7'>
@@ -55,13 +55,13 @@ const Toolbar = () => {
                                 <button 
                                 key={index}
                                 onClick={() => router.push(`/genre/${genre.id}`)}
-                                className='border border-zinc-900 hover:bg-zinc-950 rounded-lg px-2 py-1 text-[11px]'>{genre.name}</button>
+                                className='border border-zinc-900 hover:bg-zinc-900 rounded-lg px-2 py-1 text-[11px]'>{genre.name}</button>
                             ))
                         }
                     </div>
                 </div>
 
-                <div className='relative top-14 py-1 bg-zinc-950 justify-center items-center w-full flex'>
+                <div className='relative top-14 py-1 bg-zinc-950 hover:bg-black hover:border border-zinc-900 justify-center items-center w-full flex'>
                     <span className="text-white text-2xl"><CgLogOut /></span> <p className='ml-2'>Logout</p>
                 </div>
 
