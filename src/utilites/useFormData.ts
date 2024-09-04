@@ -4,8 +4,9 @@ import { FieldValues, useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 
-const useFormData = <T extends FieldValues>(schema: z.ZodType<T>) => {
+const useFormData = <T extends FieldValues>(schema: z.ZodType<T>, url: string) => {
     const [statusCode, setStatusCode] = useState<number>(0);
+    const [loading, setLoading] = useState<boolean>(false);
     const [PasswordVisible, setPasswordVisible] = useState({
         password: false,
         confirmPassword: false,
@@ -19,26 +20,33 @@ const useFormData = <T extends FieldValues>(schema: z.ZodType<T>) => {
         formState: { errors },
     } = useForm<T>({
         resolver: zodResolver(schema),
-        mode: "onTouched",
+        mode: "onSubmit",
     });
 
     const onSubmitForm = handleSubmit(async (data) => {
+        setLoading(true);
         try {
-            const response = await fetch("http://localhost:3000/api/register", {
+            const response = await fetch(url, {
                 method: "POST", headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(data),
             });
-            
             const responseData = await response.json();
-            localStorage.setItem("token", responseData.token);
+
+            if (response.ok) {
+                localStorage.setItem("token", responseData.token);
+                router.push("/");
+            }
+            
+            setLoading(false);
             setStatusCode(response.status);
-            router.push("/");
         }
         catch (error) {
-            error instanceof Response ? console.log(error.status, error.statusText) : console.error(error);
+            setLoading(false);
+            console.error(error);
         }
     });
-    return { register, errors, onSubmitForm, PasswordVisible, setPasswordVisible, statusCode };
+
+    return { register, errors, onSubmitForm, PasswordVisible, setPasswordVisible, statusCode, loading };
 };
 
 export default useFormData;

@@ -13,7 +13,7 @@ export async function POST(request: Request) {
     try {
         // Validating input data
         const { error } = registerSchema.safeParse(body);
-        if (error) error.errors.forEach((err) => { throw new BadRequest(err.message); });
+        if (error) throw new BadRequest(error.errors[0].message)
 
         // checking user existence
         const isEmailRegistered = await prisma.user.findFirst({ where: { email: email.toLocaleLowerCase() } });
