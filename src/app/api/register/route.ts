@@ -11,18 +11,14 @@ export async function POST(request: Request) {
     const { username, email, password } = body as Register;
 
     try {
-        // Validating input data
         const { error } = registerSchema.safeParse(body);
         if (error) throw new BadRequest(error.errors[0].message)
 
-        // checking user existence
         const isEmailRegistered = await prisma.user.findFirst({ where: { email: email.toLocaleLowerCase() } });
         if (isEmailRegistered) throw new Conflict("Email is already registered");
 
-        // hashing password
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // adding user to database
         const newUserInsertion = await prisma.user.create({
             data: {
                 username,
@@ -31,7 +27,6 @@ export async function POST(request: Request) {
             }
         });
 
-        // generating token
         const token = AuthUser(newUserInsertion.id);
 
         return new Response(JSON.stringify({ token }), {
@@ -39,6 +34,7 @@ export async function POST(request: Request) {
             status: 201
         });
     }
+    
     catch (error) {
         return new Response(JSON.stringify({
             error: error instanceof ErrorsHandler ? error.message : "Internal Server Error",

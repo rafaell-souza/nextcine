@@ -3,6 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { FieldValues, useForm } from "react-hook-form";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import cookies from "js-cookie";
 
 const useFormData = <T extends FieldValues>(schema: z.ZodType<T>, url: string) => {
     const [statusCode, setStatusCode] = useState<number>(0);
@@ -33,10 +34,13 @@ const useFormData = <T extends FieldValues>(schema: z.ZodType<T>, url: string) =
             const responseData = await response.json();
 
             if (response.ok) {
-                localStorage.setItem("token", responseData.token);
+                cookies.set("token", responseData.token, {
+                    sameSite: "strict",
+                })
+
                 router.push("/");
             }
-            
+
             setLoading(false);
             setStatusCode(response.status);
         }
