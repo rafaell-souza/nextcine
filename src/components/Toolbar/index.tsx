@@ -1,5 +1,6 @@
 'use client';
 
+import cookies from "js-cookie";
 import { motion } from 'framer-motion';
 import { RiMenuUnfold3Fill } from "react-icons/ri";
 import { RiMenuUnfold4Fill } from "react-icons/ri";
@@ -63,9 +64,15 @@ const Toolbar = () => {
                     </div>
                 </div>
 
-                <div className='relative top-14 py-1 bg-zinc-950 hover:bg-black hover:border border-zinc-900 justify-center items-center w-full flex'>
-                    <span className="text-white text-2xl"><CgLogOut /></span> <p className='ml-2'>Logout</p>
-                </div>
+                <Link 
+                className='relative top-14 py-1 bg-zinc-950 hover:bg-black hover:border border-zinc-900 justify-center items-center w-full flex' 
+                href="/login"
+                onClick={() => cookies.remove("token")}>
+                    <span className="text-white text-2xl">
+                        <CgLogOut />
+                        </span> 
+                        <p className='ml-2'>Logout</p>
+                </Link>
 
             </motion.section>
         </>

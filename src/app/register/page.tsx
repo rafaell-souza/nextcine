@@ -7,7 +7,7 @@ import useFormData from "@/utilites/useFormData";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 import { MdError } from "react-icons/md";
-import { ImSpinner2 } from "react-icons/im";
+import { LiaSpinnerSolid } from "react-icons/lia";
 
 import Link from "next/link";
 
@@ -102,7 +102,7 @@ const regiterPage = () => {
                     <button className="w-full h-7 font-bold rounded-3xl mt-3 bg-zinc-950 font-bold text-center text-white border-zinc-900 hover:bg-opacity-50 flex justify-center items-center hover:border">
                         {
                             loading ? (
-                                <span className="animate-spin"><ImSpinner2 /></span>
+                                <span className="animate-spin"><LiaSpinnerSolid /></span>
                             ) : "SIGN UP"
                         }
                     </button>

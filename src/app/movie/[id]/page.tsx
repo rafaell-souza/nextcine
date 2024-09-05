@@ -7,7 +7,6 @@ import ICredits from "@/app/interfaces/ICredits";
 import Carousel from "@/components/Carousel";
 import SmallCard from "@/components/movieCard/small";
 import Footer from "@/components/Footer";
-import Favorite from "@/components/favorite";
 
 import { FaRegClock } from "react-icons/fa6";
 import { CgCalendarDates } from "react-icons/cg";
@@ -89,7 +88,6 @@ export default async function Movie({ params }: { params: { id: string } }) {
                             <p className="text-xs">{director?.name}</p>
                         </div>
                         <VideoComponent trailer={trailer} />
-                        <Favorite movieId={params.id} style="ml-8" />
                     </div>
                 </div>
             </section>

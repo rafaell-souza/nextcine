@@ -6,10 +6,8 @@ import { FaCirclePlay } from "react-icons/fa6";
 type Trailer = { key: string }
 
 export default function VideoComponent({
-    style,
     trailer
 }: {
-    style?: string;
     trailer: Trailer;
 }) {
     const [videoPage, setVideoPage] = useState<boolean>(false);
@@ -28,7 +26,7 @@ export default function VideoComponent({
                         onClick={() => setVideoPage(false)}
                         className="bg-black w-full h-full mt-3 inset-0 flex justify-center items-center fixed z-40 bg-opacity-90">
                         <iframe
-                            className="w-[650px] h-[380px]"
+                            className="w-[550px] h-[280px]"
                             src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1`}
                             allow="accelerometer; autoplay; fullscreen"
                             allowFullScreen

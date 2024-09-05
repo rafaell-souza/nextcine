@@ -5,7 +5,7 @@ import loginSchema from "@/schemas/login";
 import Link from "next/link";
 
 import { MdError } from "react-icons/md";
-import { ImSpinner2 } from "react-icons/im";
+import { LiaSpinnerSolid } from "react-icons/lia";
 
 const url = "http://localhost:3000/api/login";
 
@@ -60,7 +60,7 @@ const LoginPage = () => {
                     <button className="w-full h-7 font-bold rounded-3xl mt-3 bg-zinc-950 font-bold text-center text-white border-zinc-900 flex justify-center items-center hover:bg-opacity-50 hover:border">
                         {
                             loading ? (
-                                <span className="animate-spin"><ImSpinner2 /></span>
+                                <span className="animate-spin"><LiaSpinnerSolid /></span>
                             ) : "SIGN IN"
                         }
                     </button>
