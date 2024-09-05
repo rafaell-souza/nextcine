@@ -9,6 +9,8 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useGenres from '@/hooks/useGenres';
 
+import Link from 'next/link';	
+
 const Toolbar = () => {
     const [ query, setQuery ] = useState<string>("");
     const { isTrue, toggle } = stateCondition();
@@ -22,7 +24,7 @@ const Toolbar = () => {
                 <button onClick={toggle} className='mr-2'>
                     {isTrue ? <span className='text-2xl'><RiMenuUnfold4Fill /> </ span> : <span className='text-2xl'><RiMenuUnfold3Fill /></span>}
                 </button>
-                <h1 className='text-2xl'>Cinext</h1>
+                <Link href="/" className='hover:opacity-80 text-2xl'>Cinext</ Link>
             </div>
 
             <motion.section

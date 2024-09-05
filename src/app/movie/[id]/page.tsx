@@ -1,8 +1,8 @@
-import MovieDetails from "@/app/interfaces/IDetails"
+import MovieDetails from "@/app/interfaces/IDetails";
 import IVideo from "@/app/interfaces/video";
-import Header from "@/components/header"
-import Toolbar from "@/components/Toolbar"
-import requestData from "@/utilites/requestData"
+import Header from "@/components/header";
+import Toolbar from "@/components/Toolbar";
+import requestData from "@/utilites/requestData";
 import ICredits from "@/app/interfaces/ICredits";
 import Carousel from "@/components/Carousel";
 import SmallCard from "@/components/movieCard/small";
@@ -13,7 +13,7 @@ import { FaRegClock } from "react-icons/fa6";
 import { CgCalendarDates } from "react-icons/cg";
 import VideoComponent from "@/components/video";
 
-const imageBase = "https://image.tmdb.org/t/p/original"
+const imageBase = "https://image.tmdb.org/t/p/original";
 
 type RecomendedMovies = {
     results: {

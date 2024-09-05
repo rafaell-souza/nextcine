@@ -21,10 +21,10 @@ const LoginPage = () => {
 
     return (
         <>
-            <div className="w-full flex justify-between items-center px-3 font-bold text-2xl text-white top-0 fixed h-9 border-b border-zinc-900 bg-zinc-950">
+            <header className="w-full flex justify-between items-center px-3 font-bold text-2xl text-white top-0 h-9 border-b fixed border-zinc-900 bg-zinc-950">
                 <p>Cinext</p>
                 <p>Cinext</p>
-            </div>
+            </header>
 
             <section className="h-screen w-full flex justify-center flex-col items-center">
                 <form onSubmit={onSubmitForm} className="border border-zinc-950 w-64 p-2 rounded-3xl">

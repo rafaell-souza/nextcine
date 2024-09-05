@@ -29,7 +29,7 @@ const useFormData = <T extends FieldValues>(schema: z.ZodType<T>, url: string) =
         try {
             const response = await fetch(url, {
                 method: "POST", headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(data),
+                body: JSON.stringify(data)
             });
             const responseData = await response.json();
 
@@ -37,7 +37,6 @@ const useFormData = <T extends FieldValues>(schema: z.ZodType<T>, url: string) =
                 cookies.set("token", responseData.token, {
                     sameSite: "strict",
                 })
-
                 router.push("/");
             }
 
