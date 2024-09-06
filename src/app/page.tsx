@@ -16,6 +16,7 @@ const imageUrlBase = "https://image.tmdb.org/t/p/original";
 export default async function Home() {
   const movies = await requestData<HomeInterface>(url, "force-cache");
   const trending = [...movies!.trending.results.slice(0, 10), ...movies!.trending.results.slice(0, 1)];
+
   return (
     <main className="flex">
       <Header />

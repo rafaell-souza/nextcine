@@ -5,7 +5,6 @@ import { motion } from 'framer-motion';
 import { RiMenuUnfold3Fill } from "react-icons/ri";
 import { RiMenuUnfold4Fill } from "react-icons/ri";
 import { CgLogOut } from "react-icons/cg";
-import stateCondition from '../../utilites/stateCondition';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useGenres from '@/hooks/useGenres';
@@ -14,25 +13,24 @@ import Link from 'next/link';
 
 const Toolbar = () => {
     const [ query, setQuery ] = useState<string>("");
-    const { isTrue, toggle } = stateCondition();
+    const [open, setOpen] = useState<boolean>(false);
 
     const genres = useGenres();
-
     const router = useRouter();
     return (
         <>
             <div className='fixed z-50 px-1 flex text-white'>
-                <button onClick={toggle} className='mr-2'>
-                    {isTrue ? <span className='text-2xl'><RiMenuUnfold4Fill /> </ span> : <span className='text-2xl'><RiMenuUnfold3Fill /></span>}
+                <button onClick={() => setOpen(!open)} className='mr-2'>
+                    {open ? <span className='text-2xl'><RiMenuUnfold4Fill /> </ span> : <span className='text-2xl'><RiMenuUnfold3Fill /></span>}
                 </button>
                 <Link href="/" className='hover:opacity-80 text-2xl'>Cinext</ Link>
             </div>
 
             <motion.section
                 initial={{ x: -200 }}
-                animate={{ x: isTrue ? 0 : -200 }}
+                animate={{ x: open ? 0 : -200 }}
                 transition={{ duration: 0.2, ease: 'easeInOut' }}
-                className={`${isTrue === null ? "invisible" : "visible"} fixed text-white border-r border-zinc-900 bg-black bg-opacity-90 z-40 h-screen px-2 w-[200px]`}>
+                className={`${open === null ? "invisible" : "visible"} fixed text-white border-r border-zinc-900 bg-black bg-opacity-90 z-40 h-screen px-2 w-[200px]`}>
 
                 <form 
                 onSubmit={(e) => {

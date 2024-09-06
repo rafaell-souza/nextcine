@@ -24,13 +24,8 @@ const regiterPage = () => {
 
     return (
         <>
-            <div className="w-full flex justify-between items-center px-3 font-bold text-2xl text-white top-0 h-9 border-b border-zinc-900 fixed bg-zinc-950">
-                <p>Cinext</p>
-                <p>Cinext</p>
-            </div>
-
             <section className="h-screen w-full flex justify-center flex-col items-center">
-                <form onSubmit={onSubmitForm} className="border border-zinc-950 w-64 p-2 rounded-3xl">
+                <form onSubmit={onSubmitForm} className="w-64 p-2 rounded-3xl">
                     <h1 className="w-full text-white px-1 text-2xl font-bold">Sign up</h1>
 
                     <div className="w-full mt-4 flex flex-col">

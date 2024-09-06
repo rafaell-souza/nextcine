@@ -2,7 +2,6 @@
 
 import Link from 'next/link';
 import ICard from '@/app/interfaces/IBigCard';
-import MyButton from '@/components/mybutton';
 
 const BigCard = ({ id, title, image, overview }: ICard) => {
     return (
