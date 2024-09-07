@@ -7,7 +7,7 @@ import Link from "next/link";
 import { MdError } from "react-icons/md";
 import { LiaSpinnerSolid } from "react-icons/lia";
 
-const url = "http://localhost:3000/api/login";
+const url = "/api/login";
 
 type Login = { email: string, password: string };
 

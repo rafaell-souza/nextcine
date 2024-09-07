@@ -35,10 +35,10 @@ export default async function Movie({ params }: { params: { id: string } }) {
 
     useEffect(() => {
         (async () => {
-            const details = await requestData<MovieDetails>(`http://localhost:3000/api/movies/details/${params.id}`, "no-cache");
-            const video = await requestData<IVideo>(`http://localhost:3000/api/movies/video/${params.id}`, "no-cache");
-            const credits = await requestData<ICredits>(`http://localhost:3000/api/movies/credits/${params.id}`, "no-cache");
-            const similar = await requestData<RecomendedMovies>(`http://localhost:3000/api/movies/similar/${params.id}`, "no-cache");
+            const details = await requestData<MovieDetails>(`/api/movies/details/${params.id}`, "no-cache");
+            const video = await requestData<IVideo>(`/api/movies/video/${params.id}`, "no-cache");
+            const credits = await requestData<ICredits>(`/api/movies/credits/${params.id}`, "no-cache");
+            const similar = await requestData<RecomendedMovies>(`/api/movies/similar/${params.id}`, "no-cache");
 
             setDetails(details);
             setVideo(video);
@@ -62,8 +62,8 @@ export default async function Movie({ params }: { params: { id: string } }) {
             {
                 loading ? (
                     <div className="h-[360px] top-8 relative w-full flex justify-center items-center">
-                            <span className="text-white text-4xl animate-spin"><LiaSpinnerSolid /> </span>
-                        </div>
+                        <span className="text-white text-4xl animate-spin"><LiaSpinnerSolid /> </span>
+                    </div>
                 ) : (
                     <>
                         <section className="w-full h-[370px] flex relative top-8">

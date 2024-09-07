@@ -11,7 +11,7 @@ import { LiaSpinnerSolid } from "react-icons/lia";
 
 import Link from "next/link";
 
-const url = "http://localhost:3000/api/register";
+const url = "/api/register";
 
 const regiterPage = () => {
     const { register,

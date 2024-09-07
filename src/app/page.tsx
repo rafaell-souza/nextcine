@@ -13,14 +13,12 @@ import requestData from "../utilites/requestData";
 
 import HomeInterface from "./interfaces/homeInterface";
 
-const url = "http://localhost:3000/api/movies";
+const url = "/api/movies";
 const imageUrlBase = "https://image.tmdb.org/t/p/original";
 
 export default function Home() {
-
   const [movies, setMovies] = useState<HomeInterface | null>(null);
   const [trending, setTrending] = useState<HomeInterface["trending"]["results"]>([]);
-
   useEffect(() => { 
       (async () => {
         const data = await requestData<HomeInterface>(url, "force-cache");

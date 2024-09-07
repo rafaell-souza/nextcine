@@ -12,11 +12,10 @@ const urlBaseImage = "https://image.tmdb.org/t/p/original";
 
 const GenrePage = ({ params }: { params: { id: string } }) => {
     const { id } = params;
-    const url = `http://localhost:3000/api/movies/genres/${id}/`;
+    const url = `/api/movies/genres/${id}/`;
     const ref = useRef<IntersectionObserver | null>(null);
 
     const { data, loading, pagination } = fetchManyMovies(ref, url);
-    console.log(data)
     return (
         <>
             <Header />

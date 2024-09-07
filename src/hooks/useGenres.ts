@@ -10,7 +10,7 @@ export default function useGenres() {
     useEffect(() => {
         async function getGenres() {
             try {
-                const data = await requestData<Genres>("http://localhost:3000/api/movies/genres/list", "force-cache");
+                const data = await requestData<Genres>("/api/movies/genres/list", "force-cache");
                 if (data) setGenres(data);
             }
             catch (error) {
