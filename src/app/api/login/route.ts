@@ -6,10 +6,10 @@ import bcrypt from "bcrypt";
 import { ErrorsHandler } from "@/errors/errors";
 
 export async function POST(request: Request) {
-    const body = await request.json();
-    const { email, password } = body as { email: string, password: string };
-
     try {
+        const body = await request.json();
+        const { email, password } = body as { email: string, password: string };
+        
         const { error } = loginSchema.safeParse(body);
         if (error) throw new BadRequest(error.errors[0].message)
 
@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
         if (!userExist || !(await bcrypt.compare(password, userExist.password))) {
             throw new Unauthorized("Email or password is incorrect.");
-        } 
+        }
 
         const token = AuthUser(userExist.id)
 

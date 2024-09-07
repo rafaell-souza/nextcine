@@ -7,10 +7,10 @@ import bcrypt from "bcrypt";
 import { ErrorsHandler } from "@/errors/errors";
 
 export async function POST(request: Request) {
-    const body = await request.json();
-    const { username, email, password } = body as Register;
-
     try {
+        const body = await request.json();
+        const { username, email, password } = body as Register;
+        
         const { error } = registerSchema.safeParse(body);
         if (error) throw new BadRequest(error.errors[0].message)
 
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
             status: 201
         });
     }
-    
+
     catch (error) {
         return new Response(JSON.stringify({
             error: error instanceof ErrorsHandler ? error.message : "Internal Server Error",
