@@ -56,7 +56,7 @@ const fetchManyMovies = (
         request();
     }, [url, pageNumber, url]);
 
-    const pagination = useCallback((node) => {
+    const pagination = useCallback((node: HTMLDivElement) => {
         if (loading) return;
         if (ref.current) ref.current.disconnect();
 

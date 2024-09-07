@@ -6,7 +6,7 @@ interface IVideoProps {
 }
 
 interface IVideo {
-    results: IVideoProps;
+    results: IVideoProps[];
 }
 
 export default IVideo;

@@ -1,3 +1,5 @@
+"use client";
+
 import Toolbar from "@/components/Toolbar";
 import BigCard from "../components/movieCard/big";
 import SmallCard from "../components/movieCard/small";
@@ -5,6 +7,7 @@ import Carousel from "@/components/Carousel";
 import Header from "@/components/header";
 import BigCarousel from "@/components/bigCarousel";
 import Footer from "@/components/Footer";
+import { useEffect, useState } from "react";
 
 import requestData from "../utilites/requestData";
 
@@ -13,9 +16,28 @@ import HomeInterface from "./interfaces/homeInterface";
 const url = "http://localhost:3000/api/movies";
 const imageUrlBase = "https://image.tmdb.org/t/p/original";
 
-export default async function Home() {
-  const movies = await requestData<HomeInterface>(url, "force-cache");
-  const trending = [...movies!.trending.results.slice(0, 10), ...movies!.trending.results.slice(0, 1)];
+export default function Home() {
+
+  const [movies, setMovies] = useState<HomeInterface | null>(null);
+  const [trending, setTrending] = useState<HomeInterface["trending"]["results"]>([]);
+
+  useEffect(() => { 
+      (async () => {
+        const data = await requestData<HomeInterface>(url, "force-cache");
+       if (data) {
+        setMovies(data);
+
+        const results = data?.trending?.results || [];
+        const topTen = results.slice(0, 10);
+        const firstItem = results.slice(0, 1);
+        const topeEleven = [...firstItem, ...topTen];
+        setTrending(topeEleven);
+       }
+
+      })();
+  }, []);
+
+
 
   return (
     <main className="flex">
@@ -53,7 +75,7 @@ export default async function Home() {
                     id={movie.id}
                     title={movie.title}
                     image={imageUrlBase + movie.poster_path}
-                    />
+                  />
                 )
               })
             }
@@ -74,7 +96,7 @@ export default async function Home() {
                     id={movie.id}
                     title={movie.title}
                     image={imageUrlBase + movie.poster_path}
-                    />
+                  />
                 )
               })
             }
@@ -95,7 +117,7 @@ export default async function Home() {
                     id={movie.id}
                     title={movie.title}
                     image={imageUrlBase + movie.poster_path}
-                    />
+                  />
                 )
               })
             }
@@ -116,7 +138,7 @@ export default async function Home() {
                     id={movie.id}
                     title={movie.title}
                     image={imageUrlBase + movie.poster_path}
-                    />
+                  />
                 )
               })
             }
@@ -137,7 +159,7 @@ export default async function Home() {
                     id={movie.id}
                     title={movie.title}
                     image={imageUrlBase + movie.poster_path}
-                   />
+                  />
                 )
               })
             }

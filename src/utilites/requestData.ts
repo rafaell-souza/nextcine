@@ -1,3 +1,5 @@
+"use client";
+
 type Cache = "no-cache" | "reload" | "force-cache";
 import cookies from "js-cookie";
 

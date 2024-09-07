@@ -8,7 +8,7 @@ type Trailer = { key: string }
 export default function VideoComponent({
     trailer
 }: {
-    trailer: Trailer;
+    trailer: Trailer | undefined;
 }) {
     const [videoPage, setVideoPage] = useState<boolean>(false);
     return (
@@ -27,7 +27,7 @@ export default function VideoComponent({
                         className="bg-black w-full h-full mt-3 inset-0 flex justify-center items-center fixed z-40 bg-opacity-90">
                         <iframe
                             className="w-[550px] h-[280px]"
-                            src={`https://www.youtube.com/embed/${trailer.key}?autoplay=1&mute=1`}
+                            src={`https://www.youtube.com/embed/${trailer?.key}?autoplay=1&mute=1`}
                             allow="accelerometer; autoplay; fullscreen"
                             allowFullScreen
                             title="YouTube video player">
